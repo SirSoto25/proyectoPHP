@@ -16,21 +16,21 @@ if (isset($_POST['Enviar'])) {
         $conex = new PDO('mysql:host=' . $servidor . '; dbname=' . $bd, $usuario, $contrasenia);
         $conex->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $consultar = "SELECT password FROM login WHERE usuario = ?";
-        $resul=$conex->prepare($consultar);
+        $resul = $conex->prepare($consultar);
         $resul->execute(array($user));
-        
-        while($fila=$resul->fetch(PDO::FETCH_ASSOC)){
+
+        while ($fila = $resul->fetch(PDO::FETCH_ASSOC)) {
             $pass2 = $fila['password'];
         }
-        if($pass2===md5($pass)){
+        if ($pass2 === md5($pass)) {
             echo 'Login correcto';
-        }else{
+        } else {
             echo 'Datos erroneos';
         }
-        $resul=null;
-        $conex=null;
+        $resul = null;
+        $conex = null;
     } catch (Exception $e) {
-        die ('Error: '. $e->getMessage());
+        die('Error: ' . $e->getMessage());
     }
 }
 
