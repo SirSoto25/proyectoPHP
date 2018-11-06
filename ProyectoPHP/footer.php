@@ -1,4 +1,5 @@
 <?php
-echo '</body>
+echo '</main>
+</body>
 </html>';
 ?>

@@ -2,9 +2,9 @@
 session_start();
 include "head.php";
 require_once "conexion.php";
-if(isset($_SESSION['pulsado'])){
+if (isset($_SESSION['pulsado'])) {
     $cliente = $_SESSION['usuario'];
-    if($cliente == "cliente"){
+    if ($cliente == "cliente") {
         $conex = new PDO('mysql:host=' . $servidor . '; dbname=' . $bd, $usuario, $contrasenia);
         $conex->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $consultar = "SELECT * FROM clientes WHERE dni = ?";
@@ -17,11 +17,19 @@ if(isset($_SESSION['pulsado'])){
             $nombre = $fila['nombre'];
             $apellidos = $fila['apellidos'];
         }
-        echo '<h1>Bienvenido '.$nombre.' '.$apellidos.'</h1>';
-    }else{
+        echo '<nav>
+        <div class="nav-wrapper">
+          <a href="#" class="brand-logo">Bienvenido ' . $nombre . ' ' . $apellidos . '</a>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="reservar.php">Reservar</a></li>
+            <li><a href="misReservas.php">Mis reservas</a></li>
+          </ul>
+        </div>
+      </nav>';
+    } else {
         header("Location:index.php");
     }
-}else{
+} else {
     header("Location:index.php");
 }
 include "footer.php";

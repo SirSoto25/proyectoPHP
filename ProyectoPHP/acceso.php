@@ -4,11 +4,13 @@ session_start();
 require 'head.php';
 require 'conexion.php';
 
-print '<form method="post" action="">
+print '<div>
+<form method="post" action="">
     Usuario: <input name="user" type="text" width="20"><br>
     Contraseña: <input name="pass" type="password" width="20"><br>
     <input type="submit" name="Enviar" value="Enviar">
-</form>';
+</form>
+</div>';
 
 if (isset($_POST['Enviar'])) {
     $user = htmlspecialchars($_POST['user']);
