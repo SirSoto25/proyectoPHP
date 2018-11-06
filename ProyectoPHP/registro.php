@@ -50,7 +50,7 @@ if (isset($_POST['enviar'])) {
         $resul = $conex->prepare($insertarLogin);
         $resul->execute(array($idLogin, $dni, $pass));
 
-        echo 'Registro completado con éxito';
+        header("Location:acceso.php");
     } catch (Exception $e) {
         die('Error: ' . $e->getMessage());
     }
