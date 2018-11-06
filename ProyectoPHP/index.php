@@ -11,8 +11,6 @@ print '<section>
       </ul>
     </div>
 </nav>
-    <ul>
-        
 </section>';
 require 'footer.php';
 ?>
