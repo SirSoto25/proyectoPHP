@@ -3,6 +3,7 @@ session_start();
 
 require 'head.php';
 require 'conexion.php';
+$error="";
 
 print '
 <section>
@@ -15,21 +16,35 @@ print '
       </ul>
     </div>
 </nav>
-</section> <div class="row">
-<form method="post" action="" class="col s12">
+</section>
 <div class="row">
-<div class="input-field col s6">
-<input placeholder="Nombre" name="user" type="text" width="20" class="" id="nombre">
-<label for="nombre">Nombre</label>
-</div>
-<div class="input-field col s6">
-<input placeholder="Contraseña" name="pass" type="password" width="20" class="" id="pass">
-<label for="pass">Contraseña</label>
-</div>
-</div>    
-</form>
+    <div class="col s4 offset-s4">
+        <div class="card deep-purple lighten-2">
+            <div class="card-content white-text">
+                <span class="card-title">Introduzca sus datos</span>
+                <div class="row">
+                <div class="row">
+        <form class="col s12" action="" method="post">
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="user" type="text" name="user" class="validate">
+                    <label for="user">DNI</label>
+                </div>
+                <div class="input-field col s12">
+                    <input id="pass" type="password" name="pass" class="validate">
+                    <label for="pass">Contraseña</label>
+                </div>
+                <div class="input-field col s4">
+                    <button class="btn waves-effect waves-light deep-purple darken-3" type="submit" name="Enviar">Acceder</button>
+                    </div>
+            </div>
+        </form>
+    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>';
-
 if (isset($_POST['Enviar'])) {
     $user = htmlspecialchars($_POST['user']);
     $pass = htmlspecialchars($_POST['pass']);
@@ -55,7 +70,11 @@ if (isset($_POST['Enviar'])) {
                 header("Location:indexCliente.php");
             }
         } else {
-            echo 'Datos erroneos';
+            echo '<div class"row">
+                <div class="col s12">
+                    <h3 class="center red-text">Datos incorrectos</h3>
+                </div>
+            </div>';
         }
         $resul = null;
         $conex = null;
@@ -68,6 +87,8 @@ require 'footer.php';
 ?>
 
 
-Usuario: <input name="user" type="text" width="20"><br>
-    Contraseña: <input name="pass" type="password" width="20"><br>
-    <input type="submit" name="Enviar" value="Enviar">
+
+
+
+
+
