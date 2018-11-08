@@ -1,4 +1,6 @@
 <?php
+session_start();
+$_SESSION['usuario'] = "";
 require 'head.php';
 require 'conexion.php';
 print '<section>

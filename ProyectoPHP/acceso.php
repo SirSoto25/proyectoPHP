@@ -3,7 +3,6 @@ session_start();
 
 require 'head.php';
 require 'conexion.php';
-$error="";
 
 print '
 <section>
@@ -36,7 +35,7 @@ print '
                 </div>
                 <div class="input-field col s4">
                     <button class="btn waves-effect waves-light deep-purple darken-3" type="submit" name="Enviar">Acceder</button>
-                    </div>
+                </div>
             </div>
         </form>
     </div>
