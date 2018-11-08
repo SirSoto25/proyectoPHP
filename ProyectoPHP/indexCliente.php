@@ -18,11 +18,12 @@ if (isset($_SESSION['pulsado'])) {
             $apellidos = $fila['apellidos'];
         }
         echo '<nav>
-        <div class="nav-wrapper">
+        <div class="nav-wrapper  deep-purple darken-4 white-text">
           <a href="#" class="brand-logo">Bienvenido ' . $nombre . ' ' . $apellidos . '</a>
           <ul id="nav-mobile" class="right hide-on-med-and-down">
             <li><a href="reservar.php">Reservar</a></li>
             <li><a href="misReservas.php">Mis reservas</a></li>
+            <li><a href="index.php" class="red darken-2">Desconexión</a></li>
           </ul>
         </div>
       </nav>';
