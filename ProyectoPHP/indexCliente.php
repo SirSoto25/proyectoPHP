@@ -65,26 +65,7 @@ if (($_SESSION['usuario'])!= "") {
             </div>
             </div>';
 
-            /*if(isset($_POST['reservar'])){
-
-                $habitacion = $_POST['habitacion'];
-                $consultaMax = "SELECT MAX(idreserva) FROM reservas";
-                $resul = $conex->prepare($consultaMax);
-                $resul->execute();
-
-                while($fila = $resul->fetch(PDO::FETCH_ASSOC)){
-                    $idReserva = $fila["MAX(idreserva)"] + 1;
-                }
-                $consultar = "INSERT INTO reservas VALUES(".$idReserva.",".$_SESSION['idcliente'].",".$habitacion.")";
-                $resul = $conex->prepare($consultar);
-                $resul->execute();
-
-                $actualizar = "UPDATE habitaciones SET estado='Ocupada' WHERE idhabitaciones=".$habitacion;
-                $resul = $conex->prepare($actualizar);
-                $resul->execute();
-
-                //header("refresh:0");
-            }*/
+            
         }else{
             echo '
             <div class="row">
