@@ -91,7 +91,7 @@ if (isset($_POST['enviar'])) {
 
         header("Location:acceso.php");
     } catch (Exception $e) {
-        die('Error: ' . $e->getMessage());
+        die("Fallo en el registro, revise los datos o aseguresé de que no se registró previamente");
     }
 }
 require 'footer.php';
