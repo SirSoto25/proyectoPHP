@@ -2,7 +2,7 @@
 session_start();
 include "head.php";
 require_once "conexion.php";
-if (isset($_SESSION['pulsado'])) {
+if (($_SESSION['usuario'])!= "") {
     $cliente = $_SESSION['usuario'];
     if ($cliente == "cliente") {
         $conex = new PDO('mysql:host=' . $servidor . '; dbname=' . $bd, $usuario, $contrasenia);
@@ -16,13 +16,12 @@ if (isset($_SESSION['pulsado'])) {
         while ($fila = $resul->fetch(PDO::FETCH_ASSOC)) {
             $nombre = $fila['nombre'];
             $apellidos = $fila['apellidos'];
-            $idcliente = $fila['idclientes'];
+            $_SESSION['idcliente'] = $fila['idclientes'];
         }
         echo '<nav>
         <div class="nav-wrapper  deep-purple darken-4 white-text">
           <a href="#" class="brand-logo">Bienvenido ' . $nombre . ' ' . $apellidos . '</a>
           <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><a href="indexCliente.php">Reservar</a></li>
             <li><a href="reservasCliente.php">Mis reservas</a></li>
             <li><a href="index.php" class="red darken-2">Desconexión</a></li>
           </ul>
@@ -47,12 +46,13 @@ if (isset($_SESSION['pulsado'])) {
                 </thead>
                 <tbody>';                
             while ($fila = $resul->fetch(PDO::FETCH_ASSOC)) {
+                $_SESSION['idhabitaciones'] = $fila['idhabitaciones'];
                 echo '
                     <tr>
                         <td>'.$fila["idhabitaciones"].'</td>
                         <td>'.$fila["hoteles_nombre"].'</td>
                         <td>
-                        <form action="" method="post">
+                        <form action="redirecciones.php" method="post">
                             <input type="password" value="'.$fila["idhabitaciones"].'" name="habitacion" hidden="hidden">
                             <button class="btn waves-effect waves-light deep-purple darken-3" type="submit" name="reservar">Reservar</button>
                         </form>
@@ -65,7 +65,8 @@ if (isset($_SESSION['pulsado'])) {
             </div>
             </div>';
 
-            if(isset($_POST['reservar'])){
+            /*if(isset($_POST['reservar'])){
+
                 $habitacion = $_POST['habitacion'];
                 $consultaMax = "SELECT MAX(idreserva) FROM reservas";
                 $resul = $conex->prepare($consultaMax);
@@ -74,7 +75,7 @@ if (isset($_SESSION['pulsado'])) {
                 while($fila = $resul->fetch(PDO::FETCH_ASSOC)){
                     $idReserva = $fila["MAX(idreserva)"] + 1;
                 }
-                $consultar = "INSERT INTO reservas VALUES(".$idReserva.",".$idcliente.",".$habitacion.")";
+                $consultar = "INSERT INTO reservas VALUES(".$idReserva.",".$_SESSION['idcliente'].",".$habitacion.")";
                 $resul = $conex->prepare($consultar);
                 $resul->execute();
 
@@ -82,8 +83,8 @@ if (isset($_SESSION['pulsado'])) {
                 $resul = $conex->prepare($actualizar);
                 $resul->execute();
 
-                header("Location:indexCliente.php");
-            }
+                //header("refresh:0");
+            }*/
         }else{
             echo '
             <div class="row">
