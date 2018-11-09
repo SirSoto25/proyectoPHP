@@ -1,3 +1,3 @@
 <?php
-header("Location:indexCliente.php")
+echo 'Hola, te he redireccionado';
 ?>

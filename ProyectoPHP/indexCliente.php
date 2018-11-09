@@ -22,8 +22,8 @@ if (isset($_SESSION['pulsado'])) {
         <div class="nav-wrapper  deep-purple darken-4 white-text">
           <a href="#" class="brand-logo">Bienvenido ' . $nombre . ' ' . $apellidos . '</a>
           <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><a href="reservar.php">Reservar</a></li>
-            <li><a href="misReservas.php">Mis reservas</a></li>
+            <li><a href="indexCliente.php">Reservar</a></li>
+            <li><a href="reservasCliente.php">Mis reservas</a></li>
             <li><a href="index.php" class="red darken-2">Desconexión</a></li>
           </ul>
         </div>
@@ -78,11 +78,11 @@ if (isset($_SESSION['pulsado'])) {
                 $resul = $conex->prepare($consultar);
                 $resul->execute();
 
-                $update = "UPDATE habitaciones SET estado='Ocupada' WHERE idhabitaciones=".$habitacion;
-                $resul = $conex->prepare($update);
+                $actualizar = "UPDATE habitaciones SET estado='Ocupada' WHERE idhabitaciones=".$habitacion;
+                $resul = $conex->prepare($actualizar);
                 $resul->execute();
 
-                header("Location:redirecciones.php");
+                header("Location:indexCliente.php");
             }
         }else{
             echo '
