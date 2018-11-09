@@ -3,12 +3,6 @@
 require 'head.php';
 require 'conexion.php';
 
-/*echo '<form method="POST" action="">
-    Nombre: <input type="text" name="nombre"> Apellidos: <input type="text" name="apellidos"><br>
-    Contraseña: <input type="password" name="pass"><br>
-    DNI: <input type="text" name="dni"> Tarjeta: <input type="text" name="tarjeta"><br>
-    <input type="submit" value="Enviar" name="enviar">
-</form>';*/
 
 echo '<div class="row">
 <div class="col s4 offset-s4">
