@@ -62,10 +62,8 @@ if ($_SESSION['usuario'] != "") {
       </div>';
         } else {
             echo '
-            <div class="row">
-                <div class="col s12>
-                    <h1 class="center">No tiene reservas a su nombre</h2>
-                </div>
+            <div class="col s12">
+                <h1 class="center">No tiene reservas a su nombre</h1>
             </div>';
         }
     }
