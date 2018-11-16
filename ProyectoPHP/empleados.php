@@ -2,7 +2,7 @@
 session_start();
 include "head.php";
 require_once "conexion.php";
-if (($_SESSION['usuario']) != "") {
+if (($_SESSION['usuario']) == "admin") {
     echo '<nav>
     <div class="nav-wrapper  deep-purple darken-4 white-text">
       <a href="#" class="brand-logo">Bienvenido Administrador</a>
@@ -15,7 +15,7 @@ if (($_SESSION['usuario']) != "") {
   </nav>';
     $conex = new PDO('mysql:host=' . $servidor . '; dbname=' . $bd, $usuario, $contrasenia);
     $conex->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $consultar = "SELECT * FROM reservas";
+    $consultar = "SELECT * FROM empleados";
     $resul = $conex->prepare($consultar);
     $resul->execute();
 
@@ -26,20 +26,26 @@ if (($_SESSION['usuario']) != "") {
         <table class="highlight">
             <thead>
                 <tr>
-                    <td>Habitación</td>
-                    <td>Cliente</td>
+                    <td>ID</td>
+                    <td>Nombre</td>
+                    <td>Apellidos</td>
+                    <td>Puesto</td>
+                    <td>Hotel</td>
                 </tr>
             </thead>
             <tbody>';
         while ($fila = $resul->fetch(PDO::FETCH_ASSOC)) {
             echo '
             <tr>
-                <td>' . $fila["habitaciones_idhabitaciones"] . '</td>
-                <td>' . $fila["clientes_idclientes"] . '</td>
+                <td>' . $fila["idempleados"] . '</td>
+                <td>' . $fila["nombre"] . '</td>
+                <td>' . $fila["apellidos"] . '</td>
+                <td>' . $fila["tipo"] . '</td>
+                <td>' . $fila["hoteles_nombre"] . '</td>
                 <td class="right">
                 <form action="redirecciones2.php" method="post">
-                    <input type="password" value="' . $fila["habitaciones_idhabitaciones"] . '" name="habitacion" hidden="hidden">
-                    <button class="btn waves-effect waves-light deep-purple darken-3" type="submit" name="eliminar">Eliminar</button>
+                    <input type="password" value="' . $fila["idempleados"] . '" name="empleado" hidden="hidden">
+                    <button class="btn waves-effect waves-light deep-purple darken-3" type="submit" name="despedir">Despedir</button>
                 </form>
                 </td>
             </tr>';
@@ -49,13 +55,12 @@ if (($_SESSION['usuario']) != "") {
   </table>
   </div>
   </div>';
-    } else {
+    }else{
         echo '
         <div class="col s12">
-            <h1 class="center">En estos momentos no hay ninguna reserva en ningún Hotel</h1>
+            <h1 class="center">No quedan empleados a los que despedir</h1>
         </div>';
     }
-
 } else {
     header("Location:index.php");
 }

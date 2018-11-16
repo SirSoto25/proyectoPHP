@@ -2,7 +2,7 @@
 session_start();
 include "head.php";
 require_once "conexion.php";
-if (($_SESSION['usuario']) != "") {
+if (($_SESSION['usuario']) == "admin") {
     echo '<nav>
     <div class="nav-wrapper  deep-purple darken-4 white-text">
       <a href="#" class="brand-logo">Bienvenido Administrador</a>

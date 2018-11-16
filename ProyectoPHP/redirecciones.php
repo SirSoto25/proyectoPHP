@@ -20,5 +20,10 @@ $actualizar = "UPDATE habitaciones SET estado='Ocupada' WHERE idhabitaciones=" .
 $resul = $conex->prepare($actualizar);
 $resul->execute();
 
-header("Location:indexCliente.php");
+if ($_SESSION['usuario'] == "cliente") {
+    header("Location:indexCliente.php");
+} else if ($_SESSION['usuario'] == "admin") {
+    header("Location:reservas.php");
+}
+
 ?>
