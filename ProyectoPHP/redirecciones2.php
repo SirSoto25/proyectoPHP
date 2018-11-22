@@ -14,7 +14,7 @@ if (isset($_POST['despedir'])) {
 
     header("Location:empleados.php");
 
-} else {
+} else if(isset($_POST['eliminar'])){
     $habitacionEliminar = $_POST['habitacion'];
 
     $consultaEliminar = "DELETE FROM reservas WHERE habitaciones_idhabitaciones = ?";
@@ -32,6 +32,17 @@ if (isset($_POST['despedir'])) {
     } else if ($_SESSION['usuario'] == "admin") {
         header("Location:reservas.php");
     }
+}else if(isset($_POST['editar'])){
+    $datoEditar = $_POST['puesto'];
+
+    $consultaEditar = "UPDATE empleados SET tipo = ? WHERE idempleados = ?";
+    $resulta = $conex->prepare($consultaEditar);
+    if($resulta->execute(array($datoEditar,$_POST['empleado']))){
+        header("Location:empleados.php");
+    }
+
+    
+
 }
 
 

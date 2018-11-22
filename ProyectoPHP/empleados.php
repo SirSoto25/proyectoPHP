@@ -36,19 +36,20 @@ if (($_SESSION['usuario']) == "admin") {
             <tbody>';
         while ($fila = $resul->fetch(PDO::FETCH_ASSOC)) {
             echo '
+            <form action="redirecciones2.php" method="post">
             <tr>
                 <td>' . $fila["idempleados"] . '</td>
                 <td>' . $fila["nombre"] . '</td>
                 <td>' . $fila["apellidos"] . '</td>
-                <td>' . $fila["tipo"] . '</td>
+                <td><input type="text" name="puesto" value="' . $fila["tipo"] . '"></td>
                 <td>' . $fila["hoteles_nombre"] . '</td>
                 <td class="right">
-                <form action="redirecciones2.php" method="post">
                     <input type="password" value="' . $fila["idempleados"] . '" name="empleado" hidden="hidden">
                     <button class="btn waves-effect waves-light deep-purple darken-3" type="submit" name="despedir">Despedir</button>
-                </form>
+                    <button class="btn waves-effect waves-light deep-purple darken-3" type="submit" name="editar">Editar</button>
                 </td>
-            </tr>';
+            </tr>
+            </form>';
         }
         echo '
       </tbody>

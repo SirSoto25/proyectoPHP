@@ -24,23 +24,23 @@ echo '<div class="row">
                 <form class="col s12" method="post" action="">
                     <div class="row">
                         <div class="input-field col s6">
-                            <input id="nombre" type="text" class="validate" name="nombre">
+                            <input id="nombre" type="text" class="validate" name="nombre" required>
                             <label for="nombre">Nombre</label>
                         </div>
                         <div class="input-field col s6">
-                            <input id="apellidos" type="text" class="validate" name="apellidos">
+                            <input id="apellidos" type="text" class="validate" name="apellidos" required>
                             <label for="apellidos">Apellidos</label>
                         </div>
                         <div class="input-field col s12">
-                            <input id="dni" type="text" class="validate" name="dni">
+                            <input id="dni" type="text" class="validate" name="dni" required>
                             <label for="dni">DNI</label>
                         </div>
                         <div class="input-field col s12">
-                            <input id="tarjeta" type="text" class="validate" name="tarjeta">
+                            <input id="tarjeta" type="text" class="validate" name="tarjeta" required>
                             <label for="tarjeta">Tarjeta</label>
                         </div>
                         <div class="input-field col s12">
-                            <input id="passReg" type="password" class="validate" name="pass">
+                            <input id="passReg" type="password" class="validate" name="pass" required>
                             <label for="passReg">Contraseña</label>
                         </div>
                         <div class="input-field col s4">
